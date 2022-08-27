@@ -1,3 +1,26 @@
 $primaryColor: #222 !default;
 $secondaryColor: #0fd2ed;
-$fontFamily: "sans-serif";
+$fontFamily: "ui-sans-serif";
+:global{
+  .font1 {
+    font-size: 16px;
+  }
+  .font2 {
+    font-size: 14px;
+  }
+  .font3{
+    font-size: 12px;
+  }
+  .largeFont {
+    font-size: 20px;
+  }
+  .bold {
+    font-weight: 600;
+  }
+  .bolder {
+    font-weight: 800;
+  }
+  .boldest {
+    font-weight: 900;
+  }
+}
