@@ -36,7 +36,7 @@ const TicketListing = (props) => {
               </div>
               <div className={styles.quantity}>
                     Quantity :
-                {state[0].quantity}
+                {item.quantity}
               </div>
             </div>
           </CardContent>
