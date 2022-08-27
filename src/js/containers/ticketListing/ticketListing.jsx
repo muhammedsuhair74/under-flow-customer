@@ -17,24 +17,24 @@ const TicketListing = (props) => {
               <div className={styles.imagecontainer}>
                 <img src="assets/logo.svg" alt="logo" />
               </div>
-              <div className={styles.detailscontainer}>
-                <div className={styles.title}>
+              <div className={`${styles.detailscontainer} font1`}>
+                <div className={`${styles.title} largeFont`}>
                   {item.title}
                 </div>
                 <div className={styles.time}>
                   {item.time}
                 </div>
                 <div className={styles.location}>
-                  <img src="assets/location.svg" alt="location" />
+                  <img src="assets/location.svg" alt="location" width={24}/>
                   {item.location}
                 </div>
               </div>
             </div>
             <div className={styles.bottomhalfcontainer}>
-              <div className={styles.ticketdate}>
+              <div className={`${styles.ticketdate} font1`}>
                 {item.date}
               </div>
-              <div className={styles.quantity}>
+              <div className={`${styles.quantity} font1`}>
                     Quantity :
                 {item.quantity}
               </div>

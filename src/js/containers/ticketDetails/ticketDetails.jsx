@@ -24,8 +24,8 @@ const NameTooltip = styled(({ className, ...props }) => (
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: 'black',
     color: 'white',
-    maxWidth: 400,
-    fontSize: 36,
+    maxWidth: 200,
+    fontSize: 18,
     border: '1px solid #dadde9',
     borderRadius: 20
   }
@@ -38,20 +38,20 @@ const TicketDetails = (props) => {
         <img className={styles.img} src="assets/coldplay.jpg" alt="eventimage" />
       </div>
       <NameTooltip title={state.title} enterTouchDelay={0}>
-        <div className={styles.title}>
+        <div className={`${styles.title} largeFont`}>
           {state.title}
         </div>
       </NameTooltip>
       <div className={styles.topdetails}>
-        <div className={styles.topdetailcontainer}>
+        <div className={`${styles.topdetailcontainer} font1`}>
           <div className={styles.date}>
-            <CalendarMonthIcon className={styles.calenderIcon} style={{ fontSize: 48 }}/>
+            <CalendarMonthIcon className={styles.calenderIcon} style={{ fontSize: '.font1' }}/>
             <div>
               {state.date} at {state.time}
             </div>
           </div>
           <div className={styles.location}>
-            <LocationOnIcon className={styles.locationIcon} style={{ fontSize: 48 }} />
+            <LocationOnIcon className={styles.locationIcon} style={{ fontSize: '.font1' }} />
             <div>
               {state.location}
             </div>
@@ -59,19 +59,19 @@ const TicketDetails = (props) => {
         </div>
       </div>
       <hr className={styles.line} />
-      <div className={styles.bookingdetails}>
+      <div className={`${styles.bookingdetails} largeFont`}>
           Booking Details
       </div>
       <div className={styles.bottomdetails}>
-        <div className={styles.bottomdetailcontainer}>
+        <div className={`${styles.bottomdetailcontainer} font1`}>
           <div className={styles.wallet}>
-            <img className={styles.walletIcon} src="assets/digital-wallet.png" alt='wallet' />
+            <img className={styles.walletIcon} src="assets/digital-wallet.png" alt="wallet" />
             <div>
               {state.wallet}
             </div>
           </div>
           <div className={styles.count}>
-            <img className={styles.countIcon} src="assets/bitcoin-ticket.png" alt='ticket' />
+            <img className={styles.countIcon} src="assets/bitcoin-ticket.png" alt="ticket" />
             <div>
               x {state.quantity}
             </div>
@@ -80,14 +80,14 @@ const TicketDetails = (props) => {
       </div>
       <div className={styles.qrContainer}>
         <div className={styles.text}>
-          <div className={styles.admit}>
+          <div className={`${styles.admit} largeFont`}>
             ADMIT ONE
           </div>
         </div>
         <div className={styles.qr}>
           <QRCode
             level="Q"
-            style={{ width: 400 }}
+            style={{ width: 200 }}
             value={JSON.stringify({
               title: 'JGM',
               time: '07:00pm',
