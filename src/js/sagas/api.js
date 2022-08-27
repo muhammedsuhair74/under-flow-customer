@@ -10,31 +10,27 @@ export default async function apiCall(payload) {
     API_CALL,
     TYPES,
     url,
-    isAuthRequired = true
+    isAuthRequired = false
   } = payload;
 
   // Reading API configs from config/env
-  const { apiEndpoint, apiVersion } = registry.get('config');
-  const API_URL = `${apiEndpoint}/${apiVersion}${url}`;
+  // const { apiEndpoint, apiVersion } = registry.get('config');
+  // http://192.168.1.218:1337/events
+  const API_URL = `http://192.168.1.218:1337${url}`;
 
   // Reading auth-token from cookie
-  const authToken = isAuthRequired && (registry.get('storage').getCookie('auth-token'));
+  // const authToken = isAuthRequired && (registry.get('storage').getCookie('auth-token'));
 
   // Re-routing to login if not authorized
-  if (isAuthRequired && !isAuthTokenValid(authToken)) {
-    store.dispatch(replaceRouter('/login'));
-    return null;
-  }
+  // if (isAuthRequired && !isAuthTokenValid(authToken)) {
+  //   store.dispatch(replaceRouter('/login'));
+  //   return null;
+  // }
 
   // Setting API parameters
   const apiParams = {
     ...API_CALL,
-    url: API_URL,
-    ...(isAuthRequired && {
-      headers: {
-        Authorization: authToken
-      }
-    })
+    url: API_URL
   };
 
   try {
