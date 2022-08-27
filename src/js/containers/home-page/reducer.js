@@ -6,19 +6,21 @@ import {
 } from '../../actions';
 
 const defaultState = Immutable.flatMap({
-  dummyData: {}
+  dummyData: {},
+  walletId: 'WalletId',
+  tickets: []
 });
 
 export default (state = defaultState, action) => {
   switch (action.type) {
     case HOMEPAGE_DUMMY_DATA_FETCH_REQUEST:
-      return Immutable.merge(state, { dummyData: {} });
+      return Immutable.merge(state, { tickets: [] });
 
     case HOMEPAGE_DUMMY_DATA_FETCH_SUCCESS:
-      return Immutable.merge(state, { dummyData: action.data });
+      return Immutable.merge(state, { tickets: action.data });
 
     case HOMEPAGE_DUMMY_DATA_FETCH_FAIL:
-      return Immutable.merge(state, { dummyData: {} });
+      return Immutable.merge(state, { tickets: [] });
 
     default:
       return state;

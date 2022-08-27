@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import styles from './styles.scss';
 
-const Button = (props) => (
+const Button = (props) => {
+  return(
   <button
     type="submit"
     onClick={() => props.onClick()}
@@ -11,7 +12,7 @@ const Button = (props) => (
   >
     {props.label}
   </button>
-);
+)};
 
 Button.propTypes = {
   label: PropTypes.string,

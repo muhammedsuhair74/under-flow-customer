@@ -1,0 +1,209 @@
+@import "../../../js/theme/variables.scss";
+
+.eventDetailsModal { 
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  //  font-size: 24px;
+  margin-bottom: 30px;
+  .modalWrapper{
+    // width: 78%;
+    // background-color: antiquewhite;
+    height: 100%;
+    margin-bottom: 100px;
+    overflow-y: auto;
+    .eventDetailsModalImage{
+      background-color: rgb(255 252 252 / 40%);
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: auto;
+    }
+    img {
+      width: 100%;
+      height: 34%;
+    }
+    .backArrow {
+      position: fixed;
+      top: 3%;
+      left: 2%;
+      height: 20px;
+      width: 20px;
+      color: white;
+    }
+    .title {
+      margin-left: 20px;
+      height: 30px;
+      .titleText {
+        font-weight: 700;
+      }
+    }
+    .modalTitleWrapper {
+      align-items: center;
+      color: black;
+      display: flex;
+      .modalTitleTextWrapper{
+        width: 60%;
+        margin-left: 20px;
+      }
+      .dateTime {
+        margin: 0px;
+      }
+      .dateTime, .location{
+        margin: 0px;
+        align-items: center;
+        // margin-top: 20px;
+        display: flex;
+        height: 30px;
+        // margin-left: 20px;
+        //  font-size: 24px;
+        .calendarTodayIcon, .locationIcon{
+          // height: 50px !important;
+          // width: 50px !important;
+        }
+        .dateTimeText, .locationText{ 
+          margin-left: 20px;
+          align-self: center;
+        }
+      }
+    }
+    .ticketCountButtons{
+        margin-top: 20px;
+        display: flex;
+        // width: 140px;
+        // height: 40px;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        .bookButtonWrapper {
+          display: flex;
+          // margin-left: 81%;
+          // width: 140px;
+          // height: 40px;
+          // justify-content: space-around;
+          // margin-bottom: 20px;
+          .buttons {
+            //  font-size: 45px !important;
+              height: 40px;
+            // //  font-size: 25px;
+            text-align: center;
+            color: black;
+          }
+        }
+    }
+    .count {
+      align-self: center;
+    }  
+
+    .creatorWrapper {
+      display: flex;
+      //  font-size: 24px;
+      justify-content: flex-start;
+      margin-left: 20px;
+      .iconTextWrapper{
+        width: 100%;
+        .creatorLogoWrapper{
+          margin-right: 24px;
+          //  font-size: 24px;
+          display: flex;
+          flex-direction: column;
+          .creatorImage {
+            height: 50px;
+            width: 50px;
+            border: 1px solid black;
+            border-radius: 54px;
+          }
+        }
+        .creatorNameWrapper {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 50px;
+        }
+        .creatorList{
+          padding-bottom: 10px;
+          overflow-x: auto;
+          display: flex;
+        }
+      }
+      .createdByText{
+        margin-top: 0px;
+        //  font-size: 28px;\
+        margin-bottom:10px;
+        font-weight: 900;
+      }
+    }
+    .showMoreWrapper{
+      margin-bottom: 20px;
+      //  font-size: 24px;
+      .accordionMoreDetails {
+        .MuiAccordionSummary-gutters {
+          height: 25px;
+          align-items: center;
+        }
+        // background-color:  rgb(185, 140, 85);
+        .showMoreDetails {
+          // background-color: white;
+          background-color: #efefef;
+          // .MuiCollapse-entered{
+          // }
+        }
+      }
+    }
+    .descriptionWrapper{
+      .descriptionTextWrapper {
+          display: flex;
+          flex-direction: column;
+          margin-left: 20px;
+          margin-right: 17px;
+          // //  font-size: 16px;
+          .aboutText {
+            margin-top: 0px;
+            //  font-size: 28px;
+            font-weight: 900;
+          }
+          .aboutTextDetails{
+            font-style: italic;
+            // max-height: 250px;
+            overflow-y: auto;
+          }
+      }
+    }
+    .pricePurchaseWrapper{
+      // background-color: #d5d5d5;
+      position: fixed;
+      background-color: cadetblue;
+      color: white;
+      width: 100%;
+      height: 75px;
+      // background-color: rgb(185, 140, 85);
+      // bottom: 20px;
+      bottom: 3px;
+      display: flex;
+      justify-content: space-between;
+      .priceListing{
+        width: 80%;
+        margin-left: 22px;
+        .prices{
+          display: flex;
+          height: 35%;
+        }
+      }
+      .buyNowButtonWrapper {
+        margin-right: 20px;
+        display: flex;
+        font-size: 20px;
+        width: 150px;
+        height: 65px;
+        align-items: center;
+        .buyButton {
+          height: 50px;
+          width: 100px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

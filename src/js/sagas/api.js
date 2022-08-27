@@ -8,7 +8,6 @@ const isAuthTokenValid = (authToken) => (authToken !== null && authToken !== '')
 export default async function apiCall(payload) {
   const {
     API_CALL,
-    TYPES,
     url,
     isAuthRequired = false
   } = payload;
@@ -35,14 +34,14 @@ export default async function apiCall(payload) {
 
   try {
     //  Setting initial state
-    if (TYPES.requestType) {
-      store.dispatch({ type: TYPES.requestType });
-    }
+    // if (TYPES.requestType) {
+    //   store.dispatch({ type: TYPES.requestType });
+    // }
     // Make API call
     const apiResponse = await axios(apiParams);
     if (apiResponse.data) {
       // API call success
-      store.dispatch({ type: TYPES.successType, data: apiResponse.data });
+      // store.dispatch({ type: TYPES.successType, data: apiResponse.data });
       return apiResponse.data;
     }
   } catch (err) {
@@ -53,7 +52,7 @@ export default async function apiCall(payload) {
     }
     // Logging the error
     registry.get('logger').info(`The API ${API_URL} returned this error:`, JSON.stringify(errMessage));
-    store.dispatch({ type: TYPES.failureType });
+    // store.dispatch({ type: TYPES.failureType });
   }
   return null;
 }
