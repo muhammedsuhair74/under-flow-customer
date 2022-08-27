@@ -8,19 +8,19 @@
     justify-content: space-evenly;
 
     .image {
-        padding-top: 40px;
+        padding-top: 10px;
 
         .img {
             width: 100vw;
             padding-bottom: 20px;
+            border-radius: 12px;
         }
     }
 
     .title {
         display: flex;
-        padding-top: 40px;
-        font-size: 60px;
-        padding-bottom: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         overflow: hidden;
         text-overflow: ellipsis !important;
         max-width: 900px;
@@ -30,12 +30,11 @@
     .topdetails {
         opacity: 70%;
         border-radius: 40px;
-        margin-top: 20px;
-        padding: 20px;
+        margin-top: 10px;
+        padding: 0px 20px;
         display: flex;
-        font-size: 64px;
         justify-content: space-between;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         
 
         .topdetailcontainer {
@@ -48,7 +47,6 @@
                 align-items: center;
                 padding-top: 10px;
                 padding-bottom: 10px;
-                font-size: 48px;
                 display: flex;
                 margin-bottom: 20px;
 
@@ -58,7 +56,6 @@
             }
 
             .location{
-                font-size: 48px;
                 display: flex;
 
                 .locationIcon{
@@ -74,9 +71,8 @@
 
         opacity: 70%;
         border-radius: 40px;
-        padding: 20px;
+        padding: 10px 20px 0px 20px;
         display: flex;
-        font-size: 64px;
         justify-content: space-between;
         margin-bottom: 30px;
 
@@ -84,29 +80,26 @@
             display: flex;
             flex-direction: column;
             margin-right: 20px;
-            font-size: 48px;
             
             .wallet {
                 align-items: center;
                 padding-top: 10px;
                 padding-bottom: 10px;
-                font-size: 48px;
                 display: flex;
                 margin-bottom: 20px;
 
                 .walletIcon{
-                    width: 48px;
+                    width: 16px;
                     padding-right: 20px;
                 }
             }
 
             .count{
-                font-size: 48px;
                 display: flex;
                 align-items: center;
 
                 .countIcon{
-                    width: 48px;
+                    width: 16px;
                     padding-right: 20px;
                 }
             }
@@ -121,13 +114,10 @@
     }
 
     .bookingdetails{
-        font-size: 60px;
         margin-left: 20px;
-        margin-top: 10px;
     }
 
     .qrContainer {
-        padding-top: 40px;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -136,17 +126,14 @@
         .text{
             display: flex;
             justify-content: center;
-
-            .admit{
-                font-size: 84px;
-            }
         }
 
         .qr{
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-top: 20px;
+            padding-top: 10px;
+            padding-bottom: 20px;
         }
     }
 
