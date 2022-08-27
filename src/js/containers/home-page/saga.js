@@ -5,8 +5,8 @@ import {
   HOMEPAGE_DUMMY_DATA_FETCH_FAIL
 } from '../../actions';
 
-export default async function fetchDummyApi() {
-  const url = '/5d8f5d433200000d00adec03';
+export default async function fetchTickets() {
+  const url = '/events';
   const apiArgs = {
     API_CALL: {
       method: 'GET'

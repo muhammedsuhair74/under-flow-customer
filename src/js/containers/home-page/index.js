@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 
 import HomePage from './homePage';
-import fetchDummyApi from './saga';
+import fetchTickets from './saga';
 
 const mapStateToProps = ({ homePage }) => ({
-  dummyData: homePage.dummyData
+  tickets: homePage.tickets,
+  walletId: homePage.walletId
 });
 
 const mapDispatchToProps = () => ({
-  fetchDummyApi
+  fetchTickets
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

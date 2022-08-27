@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -10,12 +10,20 @@ import { Button } from 'app/components';
 import styles from './styles.scss';
 
 const HomePage = (props) => {
+  const { fetchTickets, tickets, walletId } = props;
   const [isButtonClicked, toggleButtonClick] = useState(false);
 
   const fetchDummyApi = () => {
     props.fetchDummyApi();
     toggleButtonClick(true);
   };
+
+  useEffect(() => {
+    fetchTickets();
+  }, []);
+
+  console.log(tickets);
+  console.log(walletId);
 
   const { dummyData } = props;
   return (
@@ -43,41 +51,28 @@ const HomePage = (props) => {
         </div>
       </div>
       <div className={styles.ticketWrapper}>
-        <div className={styles.ticketCardWrapper}>
-          <Card className={styles.ticketCard}>
-            <div className={styles.ticketContent} style={{ backgroundImage: 'url(assets/sunburn.jpeg)' }}>
-              <div className={styles.ticketDetailsWrapper}>
-                <div className={styles.ticketTitle}>Sunburn Festival</div>
-                <div className={styles.ticketDetails}>
-                  <div className={styles.ticketLocation} style={{ marginTop: '0px' }}>
-                    <img className={styles.ticketDateIcon} src="assets/calendar.png" alt="calender" />
-                    <span className={styles.ticketDate}>1/1/23</span>
-                  </div>
-                  <div className={styles.ticketLocation}>INR 5000</div>
-                  <div className={styles.ticketLocation}>
-                    <img className={styles.ticketLocationIcon} src="assets/location.png" alt="location" />
-                    <span className={styles.ticketDate}>Goa</span>
+        {tickets.map((ticket) => (
+          <div className={styles.ticketCardWrapper}>
+            <Card className={styles.ticketCard}>
+              <div className={styles.ticketContent} style={{ backgroundImage: `url(${ticket.imageUrl})` }}>
+                <div className={styles.ticketDetailsWrapper}>
+                  <div className={styles.ticketTitle}>{ticket.title}</div>
+                  <div className={styles.ticketDetails}>
+                    <div className={styles.ticketLocation} style={{ marginTop: '0px' }}>
+                      <img className={styles.ticketDateIcon} src="assets/calendar.png" alt="calender" />
+                      <span className={styles.ticketDate}>1/1/23</span>
+                    </div>
+                    <div className={styles.ticketLocation}>{`INR ${ticket.fiatPrice}`}</div>
+                    <div className={styles.ticketLocation}>
+                      <img className={styles.ticketLocationIcon} src="assets/location.png" alt="location" />
+                      <span className={styles.ticketDate}>{ticket.location}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </Card>
-        </div>
-        <div className={styles.ticketCardWrapper}>
-          <Card className={styles.ticketCard}>
-            Ticket2
-          </Card>
-        </div>
-        <div className={styles.ticketCardWrapper}>
-          <Card className={styles.ticketCard}>
-            Ticket3
-          </Card>
-        </div>
-        <div className={styles.ticketCardWrapper}>
-          <Card className={styles.ticketCard}>
-            Ticket4
-          </Card>
-        </div>
+            </Card>
+          </div>
+        ))}
       </div>
     </div>
   );
