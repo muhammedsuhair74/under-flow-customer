@@ -1,0 +1,14 @@
+@import '../../theme/variables.scss';
+
+.btn {
+  width: 250px;
+  height: 45px;
+  background-color: $primaryColor;
+  color: #FFF;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    opacity: 0.90;
+  }
+}

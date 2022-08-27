@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/homePage Renders default options 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="wrapper"
+  >
+    <div
+      className="header"
+    >
+      <img
+        alt="logo"
+        className="logo"
+        src="assets/logo.svg"
+      />
+      <div>
+         Welcome to React 
+      </div>
+    </div>
+    <p
+      className="intro"
+    >
+      Start building with new &lt;React /&gt;  and &lt;Boilerplate /&gt;
+    </p>
+    <Button
+      label="Click Me!"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;
