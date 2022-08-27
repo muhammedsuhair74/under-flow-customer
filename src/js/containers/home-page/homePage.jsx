@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Add from '@mui/icons-material/Add';
 import styles from './styles.scss';
@@ -66,7 +67,7 @@ const muiTheme = extendMuiTheme({
         },
         common: {
           white: '#FFF',
-          black: '#09090D',
+          black: '#09090D'
         },
         divider: colors.grey[800],
         text: {
@@ -87,7 +88,7 @@ const theme = deepmerge(muiTheme, joyTheme);
 const HomePage = (props) => {
   const { fetchTickets, tickets, walletId } = props;
   const [isButtonClicked, toggleButtonClick] = useState(false);
-  const [accAddress, setAccAddress] = useState()
+  const [accAddress, setAccAddress] = useState();
 
   const fetchDummyApi = () => {
     props.fetchDummyApi();
@@ -95,17 +96,19 @@ const HomePage = (props) => {
   };
 
   const onClickConnect = async () => {
-    const accountAddress = await connectWallet()
-    setAccAddress(accountAddress)
-  }
+    const accountAddress = await connectWallet();
+    setAccAddress(accountAddress);
+  };
 
-  const formatAccAddress = address => `${address.slice(0, 7)}...${address.slice(-5)}`
+  const formatAccAddress = (address) => `${address.slice(0, 7)}...${address.slice(-5)}`;
+  
+  const history = useHistory();
 
   useEffect(() => {
     fetchTickets();
   }, []);
 
-  console.log(tickets);
+  tickets.map((ticket) => console.log(ticket));
   console.log(walletId);
 
   const { dummyData } = props;
@@ -124,22 +127,15 @@ const HomePage = (props) => {
               <img src="https://static.yh.io/images/metamask-fox.svg" alt="indicator" />
               {formatAccAddress(accAddress)}
             </div>
-          : <Button variant='outlined' fullWidth startIcon={<Add />} onClick={onClickConnect}>Connect to Wallet</Button>
+          : <Button variant="outlined" fullWidth startIcon={<Add />} onClick={onClickConnect}>Connect to Wallet</Button>
         }
       </div>
       <div className={styles.ticketWrapper}>
-        <div className={styles.ticketCardWrapper}>
-        <EventTile />
-        </div>
-        <div className={styles.ticketCardWrapper}>
-        <EventTile />
-        </div>
-        <div className={styles.ticketCardWrapper}>
-        <EventTile />
-        </div>
-        <div className={styles.ticketCardWrapper}>
-        <EventTile />
-        </div>
+        {tickets.map((ticket) => (
+          <div className={styles.ticketCardWrapper} onClick={() => history.push(`/ticket-details/${ticket.id}`)} role="presentation">
+            <EventTile event={ticket} />
+          </div>
+        ))}
       </div>
     </div>
     </CssVarsProvider>

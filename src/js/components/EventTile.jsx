@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 function EventTile(props) {
+  console.log(props);
   return (
     <Card variant="outlined" sx={{ minWidth: 320 }}>
       <CardOverflow>
@@ -36,42 +37,17 @@ function EventTile(props) {
           px: 'var(--Card-padding)',
           borderTop: '1px solid',
           borderColor: 'neutral.outlinedBorder',
-          bgcolor: 'background.level1',
+          bgcolor: 'background.level1'
         }}
       >
         <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
           Sun, 11 Sep 11:00 am
         </Typography>
         <Box sx={{ width: 2, bgcolor: 'divider' }} />
-        <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
-          5 tickets left
-        </Typography>
       </CardOverflow>
     </Card>
   );
 }
-
-EventTile.propTypes = {
-  event: PropTypes.shape({
-    title: PropTypes.string,
-    imageUrl: PropTypes.string,
-    fiatPrice: PropTypes.string,
-    datetime: PropTypes.any,
-    location: PropTypes.string
-  }),
-  onClick: PropTypes.func
-};
-
-EventTile.defaultProps = {
-  event: {
-    title: "Sunburn Festival",
-    imageUrl: "https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?crop=entropy&auto=format&fit=crop&w=3270",
-    fiatPrice: "1500",
-    datetime: "2016-03-26T15:10:10.000Z",
-    location: "Goa"
-  },
-  onClick: () => { }
-};
 
 export default EventTile;
 
