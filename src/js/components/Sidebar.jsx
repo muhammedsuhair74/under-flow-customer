@@ -9,6 +9,8 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import { CssVarsProvider, Button, Avatar, Typography } from '@mui/joy';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 
 export default function Sidebar() {
   const [open, setOpen] = React.useState(false);
@@ -22,7 +24,7 @@ export default function Sidebar() {
         onClose={() => setOpen(false)}
       >
         <Box
-          sx={{ width: 250 }}
+          sx={{ width: 225 }}
           role="presentation"
           onClick={() => setOpen(false)}
         >
@@ -31,6 +33,7 @@ export default function Sidebar() {
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
+                    <HomeIcon />
                   </ListItemIcon>
                   <ListItemText primary={"Home"} />
                 </ListItemButton>
@@ -42,6 +45,7 @@ export default function Sidebar() {
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
+                    <ConfirmationNumberIcon />
                   </ListItemIcon>
                   <ListItemText primary={"My Bookings"} />
                 </ListItemButton>

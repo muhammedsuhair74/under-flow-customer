@@ -21,7 +21,8 @@ export async function getCurrentAccount() {
   if (provider) {
     const accounts = await provider.request({ method: 'eth_accounts' });
     if (accounts.length) {
-      return accounts[0]
+      currentAccount = accounts[0]
+      return currentAccount;
     }
   }
 }
