@@ -36,6 +36,7 @@ const NameTooltip = styled(({ className, ...props }) => (
 const TicketDetails = (props) => {
   const { eventDetails } = props;
   const [ticketDetails, setTicketDetails] = useState({});
+  console.log(ticketDetails);
 
   const history = useHistory();
   useEffect(() => {
@@ -106,11 +107,8 @@ const TicketDetails = (props) => {
           <QRCode
             level="Q"
             style={{ width: 200 }}
-            value={JSON.stringify({ title: 'JGM',
-              time: '07:00pm',
-              location: 'Vanitha Veneetha CINEPLEX RGB LASER 4K3D:Edappally',
-              date: '16-Aug-2022',
-              quantity: 3 })}
+            value={JSON.stringify({ walletAddress: ticketDetails.wallet,
+              contractAddress: ticketDetails.contractAddress })}
           />
         </div>
       </div>

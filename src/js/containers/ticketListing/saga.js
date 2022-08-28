@@ -17,6 +17,7 @@ export const fetchTickets = async() => {
   if (response) {
     const data = response?.map((item) => ({
       id: item.id,
+      contractAddress: item.event.contractAddress,
       imageUrl: item.event.imageUrl,
       title: item.event.title,
       time: item.event.datetime,
