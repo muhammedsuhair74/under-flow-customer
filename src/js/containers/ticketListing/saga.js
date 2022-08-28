@@ -16,7 +16,8 @@ export const fetchTickets = async() => {
   const response = await apiCall(apiArgs);
   if (response) {
     const data = response?.map((item) => ({
-      id: item.event.id,
+      id: item.id,
+      imageUrl: item.event.imageUrl,
       title: item.event.title,
       time: item.event.datetime,
       location: item.event.location,
@@ -25,7 +26,6 @@ export const fetchTickets = async() => {
       wallet: item.accountAddress
     }));
     // data.fullApiResponse = response;
-    debugger;
     store.dispatch({ type: 'TICKET_LIST_FETCH', data });
   }
 };

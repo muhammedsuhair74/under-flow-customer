@@ -9,17 +9,13 @@ const TicketListing = (props) => {
   const { eventDetails, fetchTickets } = props;
 
   useEffect(() => {
-    debugger
     fetchTickets();
   }, []);
 
   const history = useHistory();
-  debugger;
   return (
     <div className={styles.wrapper}>
-      {eventDetails?.map((item) => {
-        debugger
-        return(
+      {eventDetails?.map((item) => (
         <Card className={styles.card} onClick={() => { history.push(`/ticket-details?${item.id}`); }}>
           <CardContent>
             <div className={styles.tophalfcontainer}>
@@ -50,7 +46,7 @@ const TicketListing = (props) => {
             </div>
           </CardContent>
         </Card>
-      )})}
+      ))}
     </div>
   );
 };
