@@ -21,11 +21,12 @@ export const fetchTickets = async() => {
       time: item.event.datetime,
       location: item.event.location,
       date: item.datetime,
+      imageUrl: item.event.imageUrl,
       quantity: item.quantity,
-      wallet: item.accountAddress
+      wallet: item.accountAddress,
+      price: item.event.fiatPrice
     }));
     // data.fullApiResponse = response;
-    debugger;
     store.dispatch({ type: 'TICKET_LIST_FETCH', data });
   }
 };

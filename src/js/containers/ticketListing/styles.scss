@@ -1,7 +1,11 @@
 @import "../../theme/variables.scss";
 
 .wrapper{
-    margin: 20px 10px;
+    padding: 20px 10px;
+
+    .ticket {
+        margin-bottom: 20px;
+    }
 
     .card{
         margin: 20px;
