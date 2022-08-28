@@ -14,7 +14,16 @@ export async function connectWallet() {
     currentAccount = accounts[0];
     return currentAccount;
   }
-  return 'Please install MetaMask!';
+}
+
+export async function getCurrentAccount() {
+  provider = await detectEthereumProvider();
+  if (provider) {
+    const accounts = await provider.request({ method: 'eth_accounts' });
+    if (accounts.length) {
+      return accounts[0]
+    }
+  }
 }
 
 async function convertAmount(price) {

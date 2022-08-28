@@ -1,7 +1,11 @@
 @import "../../theme/variables.scss";
 
 .wrapper{
-    padding: 20px 10px;
+    padding: 0 10px;
+
+    .ticketContainer {
+        padding-top: 30px;
+    }
 
     .ticket {
         margin-bottom: 20px;

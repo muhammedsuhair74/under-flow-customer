@@ -6,6 +6,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 import styles from './styles.scss';
 import Ticket from '../../components/Ticket';
+import Header from '../../components/header/Header';
 
 // const TicketListing = (props) => {
 //   const { eventDetails, fetchTickets } = props;
@@ -68,11 +69,14 @@ const TicketListing = (props) => {
   return (
     <CssVarsProvider>
     <div className={styles.wrapper}>
+      <Header />
+      <div className={styles.ticketContainer}>
       {eventDetails?.map((item) => {
         return <div className={styles.ticket} key={item.id} onClick={() => { history.push(`/ticket-details?${item.id}`); }}>
           <Ticket ticket={item} />
         </div>
       })}
+      </div>
     </div>
     </CssVarsProvider>
   );

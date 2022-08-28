@@ -44,8 +44,7 @@ const EventDetailModal = (props) => {
 
   useEffect(() => {
     const eventId = history.location.search.split('?')[1];
-    // fetchEventDetails(eventId);
-    fetchEventDetails(30);
+    fetchEventDetails(eventId);
   }, []);
 
 
