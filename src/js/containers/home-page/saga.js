@@ -21,9 +21,4 @@ export default async function fetchTickets() {
   if (response) {
     store.dispatch({ type: HOMEPAGE_DUMMY_DATA_FETCH_SUCCESS, data: response });
   }
-  // TYPES: {
-  //   requestType: HOMEPAGE_DUMMY_DATA_FETCH_REQUEST,
-  //   successType: HOMEPAGE_DUMMY_DATA_FETCH_SUCCESS,
-  //   failureType: HOMEPAGE_DUMMY_DATA_FETCH_FAIL
-  // },
 }

@@ -1,25 +1,31 @@
+/* eslint-disable import/prefer-default-export */
 import apiCall from '../../sagas/api';
-import {
-  HOMEPAGE_DUMMY_DATA_FETCH_REQUEST,
-  HOMEPAGE_DUMMY_DATA_FETCH_SUCCESS,
-  HOMEPAGE_DUMMY_DATA_FETCH_FAIL
-} from '../../actions';
+import { store } from '../../store';
 
-export default async function fetchDummyApi() {
-  const url = '/5d8f5d433200000d00adec03';
+export const fetchTickets = async() => {
+  const url = '/tickets?accountAddress=0xf63d0c81bbf8ddce3a5890302ecb1a6eb2abdebf';
   const apiArgs = {
     API_CALL: {
       method: 'GET'
     },
     url,
-    TYPES: {
-      requestType: HOMEPAGE_DUMMY_DATA_FETCH_REQUEST,
-      successType: HOMEPAGE_DUMMY_DATA_FETCH_SUCCESS,
-      failureType: HOMEPAGE_DUMMY_DATA_FETCH_FAIL
-    },
     isAuthRequired: false // Remove this param, if authToken required
   };
 
   // Accept response if necessary with await
-  apiCall(apiArgs);
-}
+  const response = await apiCall(apiArgs);
+  if (response) {
+    const data = response?.map((item) => ({
+      id: item.event.id,
+      title: item.event.title,
+      time: item.event.datetime,
+      location: item.event.location,
+      date: item.datetime,
+      quantity: item.quantity,
+      wallet: item.accountAddress
+    }));
+    // data.fullApiResponse = response;
+    debugger;
+    store.dispatch({ type: 'TICKET_LIST_FETCH', data });
+  }
+};

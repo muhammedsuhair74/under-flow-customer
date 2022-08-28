@@ -6,7 +6,7 @@
 import { connect } from 'react-redux';
 
 import EventDetailModal from './ticketDetails';
-import { fetchEventDetails } from './saga';
+import fetchEventDetails from './saga';
 // import fetchDummyApi from './saga';
 
 const mapStateToProps = ({ homePage, ticketDetails }) => ({

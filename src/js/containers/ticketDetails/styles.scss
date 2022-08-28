@@ -1,0 +1,141 @@
+@import "../../theme/variables.scss";
+
+.ticketwrapper{
+    padding: 0px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .image {
+        padding-top: 10px;
+
+        .img {
+            width: 100vw;
+            padding-bottom: 20px;
+            border-radius: 12px;
+        }
+    }
+
+    .title {
+        display: flex;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis !important;
+        max-width: 900px;
+        margin-left: 20px;
+    }
+
+    .topdetails {
+        opacity: 70%;
+        border-radius: 40px;
+        margin-top: 10px;
+        padding: 0px 20px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        
+
+        .topdetailcontainer {
+
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+
+            .date {
+                align-items: center;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                display: flex;
+                margin-bottom: 20px;
+
+                .calenderIcon{
+                    padding-right: 20px;
+                }
+            }
+
+            .location{
+                display: flex;
+
+                .locationIcon{
+                    padding-right: 20px;
+                }
+            }
+
+        }
+
+    }
+
+    .bottomdetails{
+
+        opacity: 70%;
+        border-radius: 40px;
+        padding: 10px 20px 0px 20px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        .bottomdetailcontainer {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+            
+            .wallet {
+                align-items: center;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                display: flex;
+                margin-bottom: 20px;
+
+                .walletIcon{
+                    width: 16px;
+                    padding-right: 20px;
+                }
+            }
+
+            .count{
+                display: flex;
+                align-items: center;
+
+                .countIcon{
+                    width: 16px;
+                    padding-right: 20px;
+                }
+            }
+
+            
+        }
+    }
+
+    .line{
+        width: 100%;
+        border: 1px solid gray;
+    }
+
+    .bookingdetails{
+        margin-left: 20px;
+    }
+
+    .qrContainer {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+
+        .text{
+            display: flex;
+            justify-content: center;
+        }
+
+        .qr{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 10px;
+            padding-bottom: 20px;
+        }
+    }
+
+        
+}

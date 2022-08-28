@@ -1,17 +1,26 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardContent } from '@mui/joy';
+import { useHistory } from 'react-router-dom';
 
 import styles from './styles.scss';
 
-const state = [{ title: 'JGM', time: '10:30 am to 2:30 pm', location: 'Ernakulam', date: 'TUE 23 Aug', quantity: 3 },
-  { title: 'RRR', time: '4:30 am to 7:30 pm', location: 'Ernakulam', date: 'TUE 25 Aug', quantity: 5 }];
-
 const TicketListing = (props) => {
+  const { eventDetails, fetchTickets } = props;
+
+  useEffect(() => {
+    debugger
+    fetchTickets();
+  }, []);
+
+  const history = useHistory();
+  debugger;
   return (
     <div className={styles.wrapper}>
-      {state.map((item, index) => (
-        <Card className={styles.card}>
+      {eventDetails?.map((item) => {
+        debugger
+        return(
+        <Card className={styles.card} onClick={() => { history.push(`/ticket-details?${item.id}`); }}>
           <CardContent>
             <div className={styles.tophalfcontainer}>
               <div className={styles.imagecontainer}>
@@ -25,7 +34,7 @@ const TicketListing = (props) => {
                   {item.time}
                 </div>
                 <div className={styles.location}>
-                  <img src="assets/location.svg" alt="location" width={24}/>
+                  <img src="assets/location.svg" alt="location" width={24} />
                   {item.location}
                 </div>
               </div>
@@ -41,7 +50,7 @@ const TicketListing = (props) => {
             </div>
           </CardContent>
         </Card>
-      ))}
+      )})}
     </div>
   );
 };

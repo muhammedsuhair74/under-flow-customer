@@ -90,10 +90,10 @@ const HomePage = (props) => {
   const [isButtonClicked, toggleButtonClick] = useState(false);
   const [accAddress, setAccAddress] = useState();
 
-  const fetchDummyApi = () => {
-    props.fetchDummyApi();
-    toggleButtonClick(true);
-  };
+  // const fetchDummyApi = () => {
+  //   props.fetchDummyApi();
+  //   toggleButtonClick(true);
+  // };
 
   const onClickConnect = async () => {
     const accountAddress = await connectWallet();
@@ -133,7 +133,7 @@ const HomePage = (props) => {
         <div className={styles.ticketWrapper}>
           {tickets.map((ticket) => {
             return (
-              <div className={styles.ticketCardWrapper} onClick={() => history.push(`/ticket-details?${ticket.id}`)} role="presentation">
+              <div className={styles.ticketCardWrapper} onClick={() => history.push(`/event-details?${ticket.id}`)} role="presentation">
                 <EventTile event={ticket} />
               </div>
             );
@@ -143,8 +143,5 @@ const HomePage = (props) => {
     </CssVarsProvider>
   );
 };
-HomePage.propTypes = {
-  fetchDummyApi: PropTypes.func.isRequired,
-  dummyData: PropTypes.shape().isRequired
-};
+
 export default HomePage;
