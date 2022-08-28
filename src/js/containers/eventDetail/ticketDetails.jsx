@@ -148,7 +148,9 @@ const EventDetailModal = (props) => {
               className={`${styles.buyButton} font1`}
               variant="contained"
               onClick={() => {
-                bookNow(ticketDetails.apiResponse, ticketCount);
+                if (ticketCount > 0) {
+                  bookNow(ticketDetails.apiResponse, ticketCount);
+                }
               }}
             >
               Buy now
