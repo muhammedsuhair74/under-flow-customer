@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Card, CardOverflow, CardContent, AspectRatio, Typography, CssVarsProvider } from '@mui/joy';
 import { useHistory } from 'react-router-dom';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import {getCurrentAccount} from '../../metamaskConnect';
 
 import styles from './styles.scss';
 import Ticket from '../../components/Ticket';
@@ -62,7 +63,13 @@ const TicketListing = (props) => {
   const { eventDetails, fetchTickets } = props;
 
   useEffect(() => {
-    fetchTickets();
+    getCurrentAccount().then((accnt) => {
+      debugger;
+      if (accnt) {
+        fetchTickets(accnt);
+      }
+    });
+    // fetchTickets();
   }, []);
 
   const history = useHistory();
