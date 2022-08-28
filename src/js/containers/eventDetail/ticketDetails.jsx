@@ -12,6 +12,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Tooltip } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import { bookNow } from '../../metamaskConnect';
+import moment from 'moment';
 
 import styles from './styles.scss';
 
@@ -64,7 +65,7 @@ const EventDetailModal = (props) => {
           <div className={styles.modalTitleTextWrapper}>
             <div className={styles.dateTime}>
               <CalendarTodayIcon className={styles.calendarTodayIcon} />
-              <p className={`${styles.dateTimeText} font1`}>{ticketDetails.eventDateTime}</p>
+              <p className={`${styles.dateTimeText} font1`}>{moment(ticketDetails.eventDateTime).format('ddd, MMM DD, LT')}</p>
             </div>
             <div className={styles.location}>
               <LocationOnIcon className={styles.locationIcon} />

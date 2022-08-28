@@ -53,6 +53,7 @@
     "app-registry": "^1.0.1",
     "axios": "^0.19.0",
     "history": "^4.10.1",
+    "moment": "^2.29.4",
     "prop-types": "^15.7.2",
     "react-qr-svg": "^2.4.0",
     "react-redux": "^7.1.1",

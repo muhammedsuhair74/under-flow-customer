@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import { useHistory } from 'react-router-dom';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import moment from 'moment';
 
 import styles from './styles.scss';
 
@@ -62,11 +63,7 @@ const TicketDetails = (props) => {
           <div className={styles.date}>
             <CalendarMonthIcon className={styles.calenderIcon} style={{ fontSize: '.font1' }} />
             <div>
-              {ticketDetails.date}
-              {' '}
-at
-              {' '}
-              {ticketDetails.time}
+              {moment(ticketDetails.time).format('ddd, MMM DD, LT')}
             </div>
           </div>
           <div className={styles.location}>
