@@ -38,20 +38,19 @@ const TicketDetails = (props) => {
 
   const history = useHistory();
   useEffect(() => {
-    debugger;
     const id = history.location.search.split('?')[1];
-    const ticketDetailsFromApi = eventDetails?.filter((item) => item.id === id);
+    const ticketDetailsFromApi = eventDetails?.filter((item) => item.id === parseInt(id, 10));
     setDetails(ticketDetailsFromApi);
   }, []);
 
   const setDetails = (details) => {
-    setTicketDetails(details);
+    setTicketDetails(details[0]);
   };
 
   return (
     <div className={styles.ticketwrapper}>
       <div className={styles.image}>
-        <img className={styles.img} src="assets/coldplay.jpg" alt="eventimage" />
+        <img className={styles.img} src={ticketDetails.imageUrl} alt="eventimage" />
       </div>
       <NameTooltip title={ticketDetails.title} enterTouchDelay={0}>
         <div className={`${styles.title} largeFont`}>
