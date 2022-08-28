@@ -11,8 +11,8 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Tooltip } from '@mui/material';
 import { useHistory } from 'react-router-dom';
-import { bookNow } from '../../metamaskConnect';
 import moment from 'moment';
+import { bookNow } from '../../metamaskConnect';
 
 import styles from './styles.scss';
 
@@ -50,7 +50,7 @@ const EventDetailModal = (props) => {
 
 
   const history = useHistory();
-
+  console.log(ticketDetails);
   return (
     <div className={`${styles.eventDetailsModal}`} role="presentation">
       <div className={styles.modalWrapper}>
@@ -131,17 +131,22 @@ const EventDetailModal = (props) => {
         <div className={styles.pricePurchaseWrapper}>
           <div className={styles.priceListing}>
             <div className={styles.prices}>
-              <p className="font1">Price rupees:</p>
-              <p className="font1">{ticketDetails.tickePrice}</p>
+              <p className="font1">Price in USD:</p>
+              <p className="font1">
+                {' '}
+                $
+                {' '}
+                {ticketDetails.ticketPrice}
+              </p>
             </div>
-            <div className={styles.prices}>
+            {/* <div className={styles.prices}>
               <p className="font1">Price Eth:</p>
               <p className="font1">
                 {ticketDetails.ticketPriceInEth}
                 {' '}
                 Eth
               </p>
-            </div>
+            </div> */}
           </div>
           <div className={styles.buyNowButtonWrapper}>
             <Button
@@ -150,6 +155,8 @@ const EventDetailModal = (props) => {
               onClick={() => {
                 if (ticketCount > 0) {
                   bookNow(ticketDetails.apiResponse, ticketCount);
+                } else {
+                  alert('No of ticket selected is 0')
                 }
               }}
             >
