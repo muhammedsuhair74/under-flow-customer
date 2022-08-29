@@ -4,7 +4,6 @@ import { Card, CardOverflow, CardContent, AspectRatio, Typography, CssVarsProvid
 import { useHistory } from 'react-router-dom';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import {getCurrentAccount} from '../../metamaskConnect';
-
 import styles from './styles.scss';
 import Ticket from '../../components/Ticket';
 import Header from '../../components/header/Header';
@@ -64,7 +63,6 @@ const TicketListing = (props) => {
 
   useEffect(() => {
     getCurrentAccount().then((accnt) => {
-      debugger;
       if (accnt) {
         fetchTickets(accnt);
       }

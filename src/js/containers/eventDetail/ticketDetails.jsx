@@ -1,21 +1,96 @@
 import React, { useEffect, useState } from 'react';
-import Button from '@mui/material/Button';
-// import TodayIcon from '@material-ui/core/TodayIcon';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Tooltip } from '@mui/material';
+import { Divider, Tooltip } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import { bookNow } from '../../metamaskConnect';
 
 import styles from './styles.scss';
+import { CssVarsProvider, Button, Typography, Sheet } from '@mui/joy';
 
+import { deepmerge } from '@mui/utils';
+import { experimental_extendTheme as extendMuiTheme } from '@mui/material/styles';
+import colors from '@mui/joy/colors';
+import {
+  extendTheme as extendJoyTheme
+} from '@mui/joy/styles';
+
+const muiTheme = extendMuiTheme({
+  // This is required to point to `var(--joy-*)` because we are using `CssVarsProvider` from Joy UI.
+  cssVarPrefix: 'joy',
+  colorSchemes: {
+    light: {
+      palette: {
+        primary: {
+          main: colors.blue[500]
+        },
+        grey: colors.grey,
+        error: {
+          main: colors.red[500]
+        },
+        info: {
+          main: colors.purple[500]
+        },
+        success: {
+          main: colors.green[500]
+        },
+        warning: {
+          main: colors.yellow[200]
+        },
+        common: {
+          white: '#FFF',
+          black: '#09090D'
+        },
+        divider: colors.grey[200],
+        text: {
+          primary: colors.grey[800],
+          secondary: colors.grey[600]
+        }
+      }
+    },
+    dark: {
+      palette: {
+        primary: {
+          main: colors.blue[600]
+        },
+        grey: colors.grey,
+        error: {
+          main: colors.red[600]
+        },
+        info: {
+          main: colors.purple[600]
+        },
+        success: {
+          main: colors.green[600]
+        },
+        warning: {
+          main: colors.yellow[300]
+        },
+        common: {
+          white: '#FFF',
+          black: '#09090D'
+        },
+        divider: colors.grey[800],
+        text: {
+          primary: colors.grey[100],
+          secondary: colors.grey[300]
+        }
+      }
+    }
+  }
+});
+
+
+const joyTheme = extendJoyTheme();
+// You can use your own `deepmerge` function.
+// joyTheme will deeply merge to muiTheme.
+const theme = deepmerge(muiTheme, joyTheme);
 
 const creators = [
   {
@@ -32,9 +107,9 @@ const creators = [
 
 const EventDetailModal = (props) => {
   const { ticketDetails, fetchEventDetails } = props;
-  const [ticketCount, setTicketCount] = useState(0);
+  const [ticketCount, setTicketCount] = useState(1);
   const subtractTicket = () => {
-    if (ticketCount > 0) {
+    if (ticketCount > 1) {
       setTicketCount(ticketCount - 1);
     }
   };
@@ -52,37 +127,40 @@ const EventDetailModal = (props) => {
   const history = useHistory();
   console.log(ticketDetails);
   return (
+    <CssVarsProvider theme={theme}>
     <div className={`${styles.eventDetailsModal}`} role="presentation">
       <div className={styles.modalWrapper}>
         <div className={styles.eventDetailsModalImage}>
-          <img src="assets/opera.jpeg" alt="" />
+          <img src={ticketDetails.imageUrl} alt="" />
         </div>
         <ArrowBackIosIcon className={styles.backArrow} onClick={() => { history.push('/home'); }} />
         <div className={styles.title}>
-          <p className={`${styles.titleText} largeFont`}>{ticketDetails.eventName}</p>
+          <Typography level="h4">
+            {ticketDetails.eventName}
+          </Typography>
         </div>
         <div className={styles.modalTitleWrapper}>
           <div className={styles.modalTitleTextWrapper}>
-            <div className={styles.dateTime}>
-              <CalendarTodayIcon className={styles.calendarTodayIcon} />
-              <p className={`${styles.dateTimeText} font1`}>{moment(ticketDetails.eventDateTime).format('ddd, MMM DD, LT')}</p>
-            </div>
-            <div className={styles.location}>
-              <LocationOnIcon className={styles.locationIcon} />
-              <p className={`${styles.locationText} font1`} style={{ alignSelf: 'center' }}>{ticketDetails.eventLocation}</p>
-            </div>
+            <Typography level="body1" component="div" style={{ display: 'flex', alignItems: 'center' }} sx={{ mt: 2, mb: 2 }}>
+              <LocationOnIcon /> 
+              <span style={{ marginLeft: '5px'}}>{moment(ticketDetails.eventDateTime).format('ddd, MMM DD, LT')}</span>
+            </Typography>
+            <Typography level="body1" component="div" style={{ display: 'flex', alignItems: 'center' }} sx={{ mb: 2 }}>
+              <CalendarTodayIcon />
+              <span style={{ marginLeft: '5px' }}>{ticketDetails.eventLocation}</span>
+            </Typography> 
           </div>
           <div className={styles.ticketCountButtons}>
             <div className={styles.bookButtonWrapper}>
-              <Button className={`${styles.buttons} font1`} onClick={subtractTicket} variant="text">-</Button>
+              <Button className={`${styles.buttons} font1`} onClick={subtractTicket} variant="outlined">-</Button>
               {/* <button className={styles.buttons} onClick={() => { setTicketCount(ticketCount - 1); }} type="submit">-</button> */}
-              <div className={`${styles.count} font1`}>{ticketCount}</div>
-              <Button className={styles.buttons} onClick={addTicket} variant="text">+</Button>
+              <div className={`${styles.count}`}><Typography>{ticketCount}</Typography></div>
+              <Button className={styles.buttons} onClick={addTicket} variant="outlined">+</Button>
               {/* <button className={styles.buttons} onClick={() => { setTicketCount(ticketCount + 1); }}onClick={() => { setTicketCount(ticketCount + 1); }} type="submit">+</button> */}
             </div>
           </div>
         </div>
-        <hr />
+        <Divider />
         <div className={styles.showMoreWrapper}>
           <Accordion className={styles.accordionMoreDetails}>
             <AccordionSummary
@@ -91,18 +169,18 @@ const EventDetailModal = (props) => {
               id="panel1a-header"
               style={{ height: '30px' }}
             >
-              <p className="largeFont" style={{ marginTop: '0px', fontWeight: '700', marginBottom: '0px' }}>More Details</p>
+              <Typography sx={{fontVariant: "small-caps"}} level="h6" style={{ marginTop: '0px', marginBottom: '0px' }}>More Details</Typography>
             </AccordionSummary>
             <AccordionDetails className={styles.showMoreDetails}>
-              <p className="font1">
+              <Typography>
                 {ticketDetails.eventDetails}
-              </p>
+              </Typography>
             </AccordionDetails>
           </Accordion>
         </div>
         <div className={styles.creatorWrapper}>
           <div className={styles.iconTextWrapper}>
-            <p className={`${styles.createdByText} largeFont`}>Created By</p>
+            <Typography sx={{fontVariant: "small-caps"}} level="h6" className={`${styles.createdByText}`}>Created By</Typography>
             <div className={styles.creatorList}>
               {
                 (ticketDetails.eventCreators).map((item) => (
@@ -110,7 +188,7 @@ const EventDetailModal = (props) => {
                     <img className={styles.creatorImage} src={`${item.logo}`} alt="" />
                     <Tooltip title={item.creatorName} enterTouchDelay={0}>
                       <div className={styles.creatorNameWrapper}>
-                        <p className="font1" style={{ marginBottom: '0px', fontWeight: '700' }}>{item.creatorName}</p>
+                        <Typography style={{ marginBottom: '0px' }}>{item.creatorName}</Typography>
                       </div>
                     </Tooltip>
                   </div>
@@ -119,25 +197,23 @@ const EventDetailModal = (props) => {
             </div>
           </div>
         </div>
-        <hr />
+        <Divider />
         <div className={styles.descriptionWrapper}>
           <div className={styles.descriptionTextWrapper}>
-            <div className={`${styles.aboutText} largeFont`}>About</div>
-            <p className={`${styles.aboutTextDetails} font1`}>
-              {ticketDetails.eventAbout}
-            </p>
+            <Typography sx={{fontVariant: "small-caps"}} level="h6" className={`${styles.aboutText}`}>About</Typography>
+            <Typography className={`${styles.aboutTextDetails}`}>
+              {ticketDetails.eventDetails}
+            </Typography>
           </div>
         </div>
-        <div className={styles.pricePurchaseWrapper}>
+        <Sheet className={styles.pricePurchaseWrapper}>
           <div className={styles.priceListing}>
             <div className={styles.prices}>
-              <p className="font1">Price in USD:</p>
-              <p className="font1">
-                {' '}
+              <Typography level="h4" sx={{fontWeight: 700}}>
                 $
                 {' '}
-                {ticketDetails.ticketPrice}
-              </p>
+                {ticketDetails.ticketPrice * ticketCount}
+              </Typography>
             </div>
             {/* <div className={styles.prices}>
               <p className="font1">Price Eth:</p>
@@ -150,8 +226,7 @@ const EventDetailModal = (props) => {
           </div>
           <div className={styles.buyNowButtonWrapper}>
             <Button
-              className={`${styles.buyButton} font1`}
-              variant="contained"
+              size='lg'
               onClick={() => {
                 if (ticketCount > 0) {
                   bookNow(ticketDetails.apiResponse, ticketCount);
@@ -163,9 +238,11 @@ const EventDetailModal = (props) => {
               Buy now
             </Button>
           </div>
-        </div>
+        </Sheet>
       </div>
-    </div>);
+    </div>
+    </CssVarsProvider>
+    );
 };
 
 export default EventDetailModal;

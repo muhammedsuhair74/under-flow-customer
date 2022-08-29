@@ -45,6 +45,9 @@ function EventTile(props) {
           {moment(props.event.datetime).format('ddd, MMM DD, LT')}
         </Typography>
         <Box sx={{ width: 2, bgcolor: 'divider' }} />
+        <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
+          {props.event.capacity - props.event.totalSold} tickets remaining
+        </Typography>
       </CardOverflow>
     </Card>
   );

@@ -18,6 +18,7 @@ export default async (eventId) => {
     ticketDetails.apiResponse = response;
     ticketDetails.eventName = response.title;
     ticketDetails.eventDateTime = response.datetime;
+    ticketDetails.imageUrl = response.imageUrl;
     ticketDetails.eventLocation = response.location;
     ticketDetails.eventDetails = response.description;
     ticketDetails.eventCreators = [{

@@ -52,7 +52,7 @@ export async function bookNow(
     contractJson.abi,
     event.contractAddress
   );
-  const cryptoPrice = await convertAmount(event.fiatPrice);
+  const cryptoPrice = await convertAmount(event.fiatPrice * count);
   const txn = {
     to: event.contractAddress,
     from: currentAccount,

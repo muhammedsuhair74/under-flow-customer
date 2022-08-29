@@ -3,8 +3,7 @@ import apiCall from '../../sagas/api';
 import { store } from '../../store';
 
 export const fetchTickets = async(accnt) => {
-  debugger;
-  const url = `/tickets?accountAddress=${accnt}`;
+  const url = `/tickets?accountAddress=${accnt.toLowerCase()}`;
   const apiArgs = {
     API_CALL: {
       method: 'GET'

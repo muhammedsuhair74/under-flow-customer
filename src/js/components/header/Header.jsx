@@ -100,8 +100,8 @@ function Header() {
   return (
     <CssVarsProvider theme={theme}>
       <div className={styles.headerBar}>
-        <Avatar className={styles.underflowLogo} />
-        <Typography level="h2" className={styles.brandName}>spotlight</Typography>
+        <Avatar className={styles.underflowLogo} src="/asset/bitcoin-ticket.png" />
+        <Typography color='info' level="h2" className={styles.brandName}>spotlight</Typography>
         <Sidebar />
       </div>
       <div className={styles.walletContaier}>

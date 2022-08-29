@@ -35,11 +35,8 @@
       color: white;
     }
     .title {
+      margin-top: 20px;
       margin-left: 20px;
-      height: 30px;
-      .titleText {
-        font-weight: 700;
-      }
     }
     .modalTitleWrapper {
       align-items: center;
@@ -95,6 +92,7 @@
     }
     .count {
       align-self: center;
+      padding: 0 10px;
     }  
 
     .creatorWrapper {
@@ -132,7 +130,6 @@
         margin-top: 0px;
         //  font-size: 28px;\
         margin-bottom:10px;
-        font-weight: 900;
       }
     }
     .showMoreWrapper{
@@ -153,6 +150,7 @@
       }
     }
     .descriptionWrapper{
+      margin-top: 20px;
       .descriptionTextWrapper {
           display: flex;
           flex-direction: column;
@@ -162,19 +160,22 @@
           .aboutText {
             margin-top: 0px;
             //  font-size: 28px;
-            font-weight: 900;
+            // font-weight: 900;
           }
           .aboutTextDetails{
-            font-style: italic;
+            // font-style: italic;
             // max-height: 250px;
             overflow-y: auto;
           }
       }
     }
     .pricePurchaseWrapper{
+      --variant-borderWidth: 1px;
+        border-top: var(--variant-borderWidth) solid;
+        border-color: var(--joy-palette-neutral-outlinedBorder);
       // background-color: #d5d5d5;
       position: fixed;
-      background-color: cadetblue;
+      // background-color: cadetblue;
       color: white;
       width: 100%;
       height: 75px;
@@ -183,6 +184,7 @@
       bottom: 3px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       .priceListing{
         width: 80%;
         margin-left: 22px;
@@ -198,6 +200,7 @@
         width: 150px;
         height: 65px;
         align-items: center;
+
         .buyButton {
           height: 50px;
           width: 100px;
